@@ -13,6 +13,11 @@ namespace CalculatorLibrary
         {
             StreamWriter logFile = File.CreateText("calculator.log");
             logFile.AutoFlush = true;
+            writer = new JsonTextWriter(logFile);
+            writer.Formatting = Formatting.Indented;
+            writer.WriteStartObject();
+            writer.WritePropertyName("Operations");
+            writer.WriteStartArray();
         }
 
         public double DoOperation(double num1, double num2, string op)

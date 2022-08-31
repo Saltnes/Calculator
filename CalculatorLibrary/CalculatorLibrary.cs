@@ -11,7 +11,7 @@ namespace CalculatorLibrary
         JsonWriter writer;
         public Calculator()
         {
-            StreamWriter logFile = File.CreateText("calculator.log");
+            StreamWriter logFile = File.CreateText("calculatorlog.json");
             logFile.AutoFlush = true;
             writer = new JsonTextWriter(logFile);
             writer.Formatting = Formatting.Indented;
@@ -29,7 +29,7 @@ namespace CalculatorLibrary
             writer.WritePropertyName("Operand2");
             writer.WriteValue(num2);
             writer.WritePropertyName("Operation");
-            // Use a switch statement to do the math.
+            // Use a switch statement for quick maths
             switch (op)
             {
                 case "a":
@@ -59,8 +59,14 @@ namespace CalculatorLibrary
             writer.WritePropertyName("Result");
             writer.WriteValue(result);
             writer.WriteEndObject();
-            
             return result;
+        }
+
+        public void Finish()
+        {
+            writer.WriteEndArray();
+            writer.WriteEndObject();
+            writer.Close();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace CalculatorLibrary
             writer.WritePropertyName("Operand2");
             writer.WriteValue(num2);
             writer.WritePropertyName("Operation");
-            // Use a switch statement to do the math.
+            // Use a switch statement for quick maths
             switch (op)
             {
                 case "a":
